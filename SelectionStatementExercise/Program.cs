@@ -7,24 +7,32 @@
             Random randomNum = new Random();
             int favNum = randomNum.Next(1,100);
             int guess = -1;
-            Console.WriteLine("guess a number");
-            while (favNum != guess)
+            Console.WriteLine("guess a number from 1 to 100");
+            int numGuesses = 0;
+            while (favNum != guess && numGuesses < 7)
             {
                 guess = (int.TryParse(Console.ReadLine(), out int guessed)) ? guessed : 0;
                 if(favNum < guess)
                 {
-                    Console.WriteLine("too high");
+                    numGuesses++;
+                    Console.WriteLine("too high, you have " + (7-numGuesses) + " guesses left");
                 }
                 else if(guess < favNum)
                 {
-                    Console.WriteLine("too low");
+                    numGuesses++;
+                    Console.WriteLine("too low, you have " + (7 - numGuesses) + " guesses left");
                 }
                 else
                 {
                     Console.WriteLine($"Yeah! The number was {favNum}");
                 }
-                
+
             }
+            if(numGuesses == 7) 
+            {
+                Console.WriteLine($"Hmm, looks like you're out of guesses, better luck next time. The correct number was {favNum} btw.");
+            }
+            
 
         }
     }
