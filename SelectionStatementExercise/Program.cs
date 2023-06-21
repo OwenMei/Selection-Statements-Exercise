@@ -14,13 +14,11 @@
                 guess = (int.TryParse(Console.ReadLine(), out int guessed)) ? guessed : 0;
                 if(favNum < guess)
                 {
-                    numGuesses++;
-                    Console.WriteLine("too high, you have " + (7-numGuesses) + " guesses left");
+                    Console.WriteLine("too high, you have " + (7-(++numGuesses)) + " guesses left");
                 }
                 else if(guess < favNum)
                 {
-                    numGuesses++;
-                    Console.WriteLine("too low, you have " + (7 - numGuesses) + " guesses left");
+                    Console.WriteLine("too low, you have " + (7 - (++numGuesses)) + " guesses left");
                 }
                 else
                 {
